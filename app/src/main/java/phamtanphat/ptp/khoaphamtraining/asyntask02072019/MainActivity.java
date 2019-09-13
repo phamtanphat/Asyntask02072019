@@ -6,20 +6,43 @@ import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView txt;
+//    TextView txt;
+    SeekBar sk;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        txt = findViewById(R.id.textview);
+//        txt = findViewById(R.id.textview);
         //class vo danh
-        xulytientrinh().execute();
+//        xulytientrinh().execute();
+
+        sk = findViewById(R.id.seekbar);
+        sk.setMax(10000);
+        sk.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                Log.d("BBB",i + "");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
+    //ctrl + . : thu gon code
     //Nested class
     // inner class : Delegate
     // params : gia tri truyen vao cho phan xu ly logic
@@ -31,40 +54,41 @@ public class MainActivity extends AppCompatActivity {
     //  Thuc thi cong viec 3
     //Thuc thi ket thuc
     //Ket thuc phan xu ly
-    private AsyncTask<Void , String ,String> xulytientrinh(){
-        return new AsyncTask<Void, String, String>() {
-            @Override
-            protected void onPreExecute() {
-                txt.setText("Bat dau thuc thi \n");
-            }
-
-            @Override
-            protected String doInBackground(Void... voids) {
-                for (int i = 1 ; i <= 3 ; i++ ){
-                    try {
-                        String congviec = "Thuc thi cong viec " + i;
-                        Thread.sleep(1000);
-                        publishProgress(congviec);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                return "Thuc thi ket thuc";
-            }
-            @Override
-            protected void onProgressUpdate(String... values) {
-                txt.append(values[0] + "\n");
-                super.onProgressUpdate(values);
-            }
-
-            @Override
-            protected void onPostExecute(String s) {
-                txt.append(s + "\n");
-                txt.append("Ket thuc phan xu ly");
-                super.onPostExecute(s);
-            }
-        };
-    }
+//    @SuppressLint("StaticFieldLeak")
+//    private AsyncTask<Void , String ,String> xulytientrinh(){
+//        return new AsyncTask<Void, String, String>() {
+//            @Override
+//            protected void onPreExecute() {
+//                txt.setText("Bat dau thuc thi \n");
+//            }
+//
+//            @Override
+//            protected String doInBackground(Void... voids) {
+//                for (int i = 1 ; i <= 3 ; i++ ){
+//                    try {
+//                        String congviec = "Thuc thi cong viec " + i;
+//                        Thread.sleep(1000);
+//                        publishProgress(congviec);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//                return "Thuc thi ket thuc";
+//            }
+//            @Override
+//            protected void onProgressUpdate(String... values) {
+//                txt.append(values[0] + "\n");
+//                super.onProgressUpdate(values);
+//            }
+//
+//            @Override
+//            protected void onPostExecute(String s) {
+//                txt.append(s + "\n");
+//                txt.append("Ket thuc phan xu ly");
+//                super.onPostExecute(s);
+//            }
+//        };
+//    }
 
 
 
