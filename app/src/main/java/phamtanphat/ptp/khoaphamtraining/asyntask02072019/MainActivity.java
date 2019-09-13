@@ -55,9 +55,8 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-            return null;
+            return "Thuc thi ket thuc";
         }
-
         @Override
         protected void onProgressUpdate(String... values) {
             txt.append(values[0] + "\n");
@@ -66,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String s) {
+            txt.append(s + "\n");
+            txt.append("Ket thuc phan xu ly");
             super.onPostExecute(s);
         }
 
