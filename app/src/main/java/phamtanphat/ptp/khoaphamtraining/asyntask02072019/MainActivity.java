@@ -4,14 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    TextView txt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        txt = findViewById(R.id.textview);
 
     }
     //Nested class
@@ -28,20 +32,35 @@ public class MainActivity extends AppCompatActivity {
     //  Thuc thi cong viec 3
     //Thuc thi ket thuc
     //Ket thuc phan xu ly
-    class Xulytientrinh extends AsyncTask<String,String,String> {
-
+    class Xulytientrinh extends AsyncTask<Void,String,String> {
         @Override
         protected void onPreExecute() {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    txt.setText("Bat dau thuc thi \n");
+                }
+            }, 2000);
             super.onPreExecute();
         }
 
         @Override
-        protected String doInBackground(String... strings) {
+        protected String doInBackground(Void... voids) {
+            for (int i = 1 ; i <= 3 ; i++ ){
+                try {
+                    String congviec = "Thuc thi cong viec " + i;
+                    Thread.sleep(1000);
+                    publishProgress(congviec);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
             return null;
         }
 
         @Override
         protected void onProgressUpdate(String... values) {
+            txt.append(values[0] + "\n");
             super.onProgressUpdate(values);
         }
 
