@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
 //    TextView txt;
-    SeekBar sk;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,24 +23,7 @@ public class MainActivity extends AppCompatActivity {
         //class vo danh
 //        xulytientrinh().execute();
 
-        sk = findViewById(R.id.seekbar);
-        sk.setMax(10000);
-        sk.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                Log.d("BBB",i + "");
-            }
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
     }
     //ctrl + . : thu gon code
     //Nested class
