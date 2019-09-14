@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
         //  Thuc thi cong viec 3
         //Thuc thi ket thuc
         //Ket thuc phan xu ly
+        Xulytientrinh xulytientrinh = new Xulytientrinh();
+        xulytientrinh.execute();
     }
     //Nested class
     // inner class : Delegate
@@ -33,11 +35,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             mtxt.setText("Bat dau thuc thi");
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            this.cancel(true);
             super.onPreExecute();
         }
 
