@@ -9,6 +9,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     TextView mtxt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,8 +22,10 @@ public class MainActivity extends AppCompatActivity {
         //  Thuc thi cong viec 3
         //Thuc thi ket thuc
         //Ket thuc phan xu ly
-        Xulytientrinh xulytientrinh = new Xulytientrinh();
-        xulytientrinh.execute();
+
+
+        // class vo danh
+        new Xulytientrinh().execute();
     }
     //Nested class
     // inner class : Delegate
@@ -30,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     // params : gia tri truyen vao cho phan xu ly logic
     // progress : gia tri khi xu ly se cap nhat len cho view
     // result : sau khi thuc thi xog day la du lieu tra ve
-    class Xulytientrinh extends AsyncTask<String,String,String> {
+    class Xulytientrinh extends AsyncTask<String, String, String> {
 
         @Override
         protected void onPreExecute() {
@@ -41,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... strings) {
-            for (int i = 1 ; i <= 3 ; i++){
+            for (int i = 1; i <= 3; i++) {
                 String congviec = "Thuc thi cong viec " + i;
                 try {
                     Thread.sleep(1000);
